@@ -20,9 +20,13 @@ class brick {
 private:
 	int xPos;
 	int yPos;
+	bool isdead;
 public:
 	void initBrick(int x, int y);
 	void drawBrick();
+	bool brickcollision(int ballx, int bally, int ballw, int ballh);
+	bool kill();
+	bool isdead();
 };
 
 int main() {
@@ -145,6 +149,71 @@ int main() {
 			}
 
 			redraw = true;
+
+			if (hit(Ball_x, Ball_y, 15, 15, bouncer_x, bouncer_y, 100, 32)) {
+				Ball_dy = -Ball_dy;
+			}
+
+			if (b1.isdead() == false && b1.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+				Ball_dy = -Ball_dy;
+				b1.kill();
+			}
+			if (b2.isdead() == false && b2.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+				Ball_dy = -Ball_dy;
+				b2.kill();
+			}
+			if (b3.isdead() == false && b3.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+				Ball_dy = -Ball_dy;
+				b3.kill();
+			}
+			if (b4.isdead() == false && b4.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+				Ball_dy = -Ball_dy;
+				b4.kill();
+			}
+			if (b5.isdead() == false && b5.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+				Ball_dy = -Ball_dy;
+				b5.kill();
+			}
+			if (b6.isdead() == false && b6.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+				Ball_dy = -Ball_dy;
+				b6.kill();
+			}
+			if (b7.isdead() == false && b7.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+				Ball_dy = -Ball_dy;
+				b7.kill();
+			}
+			if (b8.isdead() == false && b8.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+				Ball_dy = -Ball_dy;
+				b8.kill();
+			}
+			if (b9.isdead() == false && b9.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+				Ball_dy = -Ball_dy;
+				b9.kill();
+			}
+			if (b10.isdead() == false && b10.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+				Ball_dy = -Ball_dy;
+				b10.kill();
+			}
+			if (b11.isdead() == false && b11.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+				Ball_dy = -Ball_dy;
+				b11.kill();
+			}
+			if (b12.isdead() == false && b12.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+				Ball_dy = -Ball_dy;
+				b12.kill();
+			}
+			if (b13.isdead() == false && b13.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+				Ball_dy = -Ball_dy;
+				b13.kill();
+			}
+			if (b14.isdead() == false && b14.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+				Ball_dy = -Ball_dy;
+				b4.kill();
+			}
+			if (b15.isdead() == false && b15.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+				Ball_dy = -Ball_dy;
+				b15.kill();
+			}
 		}
 		else if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
 			break;
@@ -188,21 +257,51 @@ int main() {
 
 			al_clear_to_color(al_map_rgb(0, 0, 0));
 
-			b1.drawBrick();
-			b2.drawBrick();
-			b3.drawBrick();
-			b4.drawBrick();
-			b5.drawBrick();
-			b6.drawBrick();
-			b7.drawBrick();
-			b8.drawBrick();
-			b9.drawBrick();
-			b10.drawBrick();
-			b11.drawBrick();
-			b12.drawBrick();
-			b13.drawBrick();
-			b14.drawBrick();
-			b15.drawBrick();
+			if (b1.isdead() == false) {
+				b1.drawBrick();
+			}
+			if (b2.isdead() == false) {
+				b2.drawBrick();
+			}
+			if (b3.isdead() == false) {
+				b3.drawBrick();
+			}
+			if (b4.isdead() == false) {
+				b4.drawBrick();
+			}
+			if (b5.isdead() == false) {
+				b5.drawBrick();
+			}
+			if (b6.isdead() == false) {
+				b6.drawBrick();
+			}
+			if (b7.isdead() == false) {
+				b7.drawBrick();
+			}
+			if (b8.isdead() == false) {
+				b8.drawBrick();
+			}
+			if (b9.isdead() == false) {
+				b9.drawBrick();
+			}
+			if (b10.isdead() == false) {
+				b10.drawBrick();
+			}
+			if (b11.isdead() == false) {
+				b11.drawBrick();
+			}
+			if (b12.isdead() == false) {
+				b12.drawBrick();
+			}
+			if (b13.isdead() == false) {
+				b13.drawBrick();
+			}
+			if (b14.isdead() == false) {
+				b14.drawBrick();
+			}
+			if (b15.isdead() == false) {
+				b15.drawBrick();
+			}
 
 			al_draw_bitmap(bouncer, bouncer_x, bouncer_y, 0);
 			al_draw_bitmap(Ball, Ball_x, Ball_y, 0);
@@ -230,6 +329,13 @@ void brick::drawBrick() {
 
 bool hit(int x1, int y1, int h1, int w1, int x2, int y2, int h2, int w2) {
 	if ((x1 + w1 > x2) && (x1 < w2 + x1) && (y1 + h1 > y2) && (y1 < h2 + y2))
+		return true;
+	else
+		return false;
+}
+
+bool brick::brickcollision(int ballx, int bally, int ballw, int ballh) {
+	if ((xPos + 100 > ballx) && (ballx + 32 > xPos) && (bally +32 > yPos) && (yPos +32 >bally))
 		return true;
 	else
 		return false;

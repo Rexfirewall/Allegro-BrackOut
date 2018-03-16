@@ -1,8 +1,8 @@
 #include <iostream>
 #include <allegro5\allegro.h>
 #include <allegro5\allegro_primitives.h>
-#include <allegro5\allegro_audio.h>
-#include <allegro5\allegro_acodec.h>
+//#include <allegro5\allegro_audio.h>
+//#include <allegro5\allegro_acodec.h>
 
 using namespace std;
 
@@ -25,8 +25,8 @@ public:
 	void initBrick(int x, int y);
 	void drawBrick();
 	bool brickcollision(int ballx, int bally, int ballw, int ballh);
-	bool kill();
-	bool isdead();
+	void kill();
+	bool dead();
 };
 
 int main() {
@@ -37,7 +37,7 @@ int main() {
 	ALLEGRO_BITMAP *Ball = NULL;
 
 	float bouncer_x = 295;
-	float bouncer_y = 450;
+	float bouncer_y = 425;
 	float Ball_x = 200;
 	float Ball_y = 200;
 	float Ball_dx = -4.0, Ball_dy = 4.0;
@@ -128,7 +128,7 @@ int main() {
 			bouncer_x -= 4.0;
 			}
 
-			if (key[KEY_RIGHT] && bouncer_x >= 4.0) {
+			if (key[KEY_RIGHT] && bouncer_x <= SCREEN_W - 100 - 4.0) {
 				bouncer_x += 4.0;
 			}
 
@@ -143,74 +143,74 @@ int main() {
 			Ball_x += Ball_dx;
 			Ball_y += Ball_dy;
 
-			if (hit(Ball_x, Ball_y, 32, 32, bouncer_x, bouncer_y, 32, 100) == true) {
+			if (hit(Ball_x, Ball_y, 20, 20, bouncer_x, bouncer_y, 100, 20) == true) {
 				Ball_dx = -Ball_dx;
 				Ball_dy = -Ball_dy;
 			}
 
 			redraw = true;
 
-			if (hit(Ball_x, Ball_y, 15, 15, bouncer_x, bouncer_y, 100, 32)) {
+			if (hit(Ball_x, Ball_y, 15, 15, bouncer_x, bouncer_y, 20, 20)) {
 				Ball_dy = -Ball_dy;
 			}
 
-			if (b1.isdead() == false && b1.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+			if (b1.dead() == false && b1.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
 				Ball_dy = -Ball_dy;
 				b1.kill();
 			}
-			if (b2.isdead() == false && b2.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+			if (b2.dead() == false && b2.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
 				Ball_dy = -Ball_dy;
 				b2.kill();
 			}
-			if (b3.isdead() == false && b3.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+			if (b3.dead() == false && b3.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
 				Ball_dy = -Ball_dy;
 				b3.kill();
 			}
-			if (b4.isdead() == false && b4.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+			if (b4.dead() == false && b4.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
 				Ball_dy = -Ball_dy;
 				b4.kill();
 			}
-			if (b5.isdead() == false && b5.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+			if (b5.dead() == false && b5.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
 				Ball_dy = -Ball_dy;
 				b5.kill();
 			}
-			if (b6.isdead() == false && b6.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+			if (b6.dead() == false && b6.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
 				Ball_dy = -Ball_dy;
 				b6.kill();
 			}
-			if (b7.isdead() == false && b7.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+			if (b7.dead() == false && b7.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
 				Ball_dy = -Ball_dy;
 				b7.kill();
 			}
-			if (b8.isdead() == false && b8.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+			if (b8.dead() == false && b8.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
 				Ball_dy = -Ball_dy;
 				b8.kill();
 			}
-			if (b9.isdead() == false && b9.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+			if (b9.dead() == false && b9.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
 				Ball_dy = -Ball_dy;
 				b9.kill();
 			}
-			if (b10.isdead() == false && b10.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+			if (b10.dead() == false && b10.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
 				Ball_dy = -Ball_dy;
 				b10.kill();
 			}
-			if (b11.isdead() == false && b11.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+			if (b11.dead() == false && b11.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
 				Ball_dy = -Ball_dy;
 				b11.kill();
 			}
-			if (b12.isdead() == false && b12.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+			if (b12.dead() == false && b12.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
 				Ball_dy = -Ball_dy;
 				b12.kill();
 			}
-			if (b13.isdead() == false && b13.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+			if (b13.dead() == false && b13.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
 				Ball_dy = -Ball_dy;
 				b13.kill();
 			}
-			if (b14.isdead() == false && b14.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+			if (b14.dead() == false && b14.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
 				Ball_dy = -Ball_dy;
-				b4.kill();
+				b14.kill();
 			}
-			if (b15.isdead() == false && b15.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
+			if (b15.dead() == false && b15.brickcollision(Ball_x, Ball_y, 20, 20) == true) {
 				Ball_dy = -Ball_dy;
 				b15.kill();
 			}
@@ -247,59 +247,59 @@ int main() {
 
 			}
 		}
-		/*else if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
+		else if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
 			break;
 		}
-		*/
+		
 
 		if (redraw && al_is_event_queue_empty(event_queue)) {
 			redraw = false;
 
 			al_clear_to_color(al_map_rgb(0, 0, 0));
 
-			if (b1.isdead() == false) {
+			if (b1.dead() == false) {
 				b1.drawBrick();
 			}
-			if (b2.isdead() == false) {
+			if (b2.dead() == false) {
 				b2.drawBrick();
 			}
-			if (b3.isdead() == false) {
+			if (b3.dead() == false) {
 				b3.drawBrick();
 			}
-			if (b4.isdead() == false) {
+			if (b4.dead() == false) {
 				b4.drawBrick();
 			}
-			if (b5.isdead() == false) {
+			if (b5.dead() == false) {
 				b5.drawBrick();
 			}
-			if (b6.isdead() == false) {
+			if (b6.dead() == false) {
 				b6.drawBrick();
 			}
-			if (b7.isdead() == false) {
+			if (b7.dead() == false) {
 				b7.drawBrick();
 			}
-			if (b8.isdead() == false) {
+			if (b8.dead() == false) {
 				b8.drawBrick();
 			}
-			if (b9.isdead() == false) {
+			if (b9.dead() == false) {
 				b9.drawBrick();
 			}
-			if (b10.isdead() == false) {
+			if (b10.dead() == false) {
 				b10.drawBrick();
 			}
-			if (b11.isdead() == false) {
+			if (b11.dead() == false) {
 				b11.drawBrick();
 			}
-			if (b12.isdead() == false) {
+			if (b12.dead() == false) {
 				b12.drawBrick();
 			}
-			if (b13.isdead() == false) {
+			if (b13.dead() == false) {
 				b13.drawBrick();
 			}
-			if (b14.isdead() == false) {
+			if (b14.dead() == false) {
 				b14.drawBrick();
 			}
-			if (b15.isdead() == false) {
+			if (b15.dead() == false) {
 				b15.drawBrick();
 			}
 
@@ -321,6 +321,7 @@ int main() {
 void brick::initBrick(int x, int y) {
 	xPos = x;
 	yPos = y;
+	isdead = false;
 }
 
 void brick::drawBrick() {
@@ -335,8 +336,16 @@ bool hit(int x1, int y1, int h1, int w1, int x2, int y2, int h2, int w2) {
 }
 
 bool brick::brickcollision(int ballx, int bally, int ballw, int ballh) {
-	if ((xPos + 100 > ballx) && (ballx + 32 > xPos) && (bally +32 > yPos) && (yPos +32 >bally))
+	if ((xPos + 80 > ballx) && (ballx + 20 > xPos) && (bally +20 > yPos) && (yPos +20 >bally))
 		return true;
 	else
 		return false;
+}
+
+bool brick::dead() {
+	return isdead;
+}
+
+void brick::kill() {
+	isdead = true;
 }

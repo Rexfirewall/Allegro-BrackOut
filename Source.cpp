@@ -3,6 +3,7 @@
 #include <allegro5\allegro_primitives.h>
 //#include <allegro5\allegro_audio.h>
 //#include <allegro5\allegro_acodec.h>
+#include <allegro5/allegro_image.h>
 
 using namespace std;
 
@@ -11,6 +12,8 @@ const int SCREEN_W = 640;
 const int SCREEN_H = 480;
 const int BOUNCER_SIZE = 32;
 bool hit(int x1, int y1, int h1, int w1, int x2, int y2, int h2, int w2);
+
+//bool key[2] = { false, false };
 
 enum MYKEYS {
 	KEY_LEFT, KEY_RIGHT
@@ -31,6 +34,7 @@ public:
 
 int main() {
 	ALLEGRO_DISPLAY *win = NULL;
+	ALLEGRO_DISPLAY *BackGroundPIC = NULL;
 	ALLEGRO_EVENT_QUEUE *event_queue = NULL;
 	ALLEGRO_TIMER *timer = NULL;
 	ALLEGRO_BITMAP *bouncer = NULL;
@@ -38,8 +42,8 @@ int main() {
 
 	float bouncer_x = 295;
 	float bouncer_y = 425;
-	float Ball_x = 200;
-	float Ball_y = 200;
+	float Ball_x = 300;
+	float Ball_y = 350;
 	float Ball_dx = -4.0, Ball_dy = 4.0;
 	bool key[4] = { false, false};
 	bool redraw = true;
@@ -51,6 +55,7 @@ int main() {
 
 	al_init();
 	al_init_primitives_addon();
+	al_init_image_addon();
 	al_install_keyboard();
 	
 	timer = al_create_timer(1.0 / FPS);
@@ -143,7 +148,7 @@ int main() {
 			Ball_x += Ball_dx;
 			Ball_y += Ball_dy;
 
-			if (hit(Ball_x, Ball_y, 20, 20, bouncer_x, bouncer_y, 100, 20) == true) {
+			if (hit(Ball_x, Ball_y, 20, 20, bouncer_x, bouncer_y, 20, 100) == true) {
 				Ball_dx = -Ball_dx;
 				Ball_dy = -Ball_dy;
 			}
@@ -329,7 +334,7 @@ void brick::drawBrick() {
 }
 
 bool hit(int x1, int y1, int h1, int w1, int x2, int y2, int h2, int w2) {
-	if ((x1 + w1 > x2) && (x1 < w2 + x1) && (y1 + h1 > y2) && (y1 < h2 + y2))
+	if ((x1 + w1 > x2) && (x1 < x2 + w2) && (y1 + h1 > y2) && (y1 < h2 + y2))
 		return true;
 	else
 		return false;
